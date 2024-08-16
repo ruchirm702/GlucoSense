@@ -34,4 +34,7 @@ public class PatientDTO {
     private EmergencyContactDTO emergencyContact;
     private List<LabResultDTO> labResults;
     private List<MedicationDTO> medications;
+
+    public void setPatientId(Long id) {
+    }
 }

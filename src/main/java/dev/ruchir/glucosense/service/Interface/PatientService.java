@@ -12,4 +12,5 @@ public interface PatientService {
     PatientDTO createPatient(PatientDTO patientDTO);
     void deletePatient(Long id);
     Long countPatientsByBloodType(BloodType bloodType);
+    PatientDTO updatePatient(Long id, PatientDTO patientDTO); // Updated signature
 }

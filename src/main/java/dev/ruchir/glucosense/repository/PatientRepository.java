@@ -9,14 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    // Count patients by blood type enum
+
+    // Count patients by blood type
     @Query("SELECT COUNT(p) FROM Patient p WHERE p.bloodType = :bloodType")
     Long countByBloodType(@Param("bloodType") BloodType bloodType);
 
-    // Find patients by username
-    @Query("SELECT p FROM Patient p WHERE p.username LIKE %:username%")
-    List<Patient> findByUsername(@Param("username") String username);
+    // Find patients by username (for searching by name)
+    @Query("SELECT p FROM Patient p WHERE p.firstName LIKE %:name% OR p.lastName LIKE %:name%")
+    List<Patient> findByName(@Param("name") String name);
 }

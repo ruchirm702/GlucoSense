@@ -7,9 +7,12 @@ import dev.ruchir.glucosense.model.Enum.BloodType;
 import dev.ruchir.glucosense.repository.PatientRepository;
 import dev.ruchir.glucosense.service.Interface.PatientService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+@Service
 public class PatientServiceIMPL implements PatientService {
     private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
@@ -29,8 +32,8 @@ public class PatientServiceIMPL implements PatientService {
     }
 
     @Override
-    public List<PatientDTO> getPatientsByName(String username) {
-        return patientRepository.findByUsername(username)
+    public List<PatientDTO> getPatientsByName(String name) {
+        return patientRepository.findByName(name)
                 .stream()
                 .map(patient -> modelMapper.map(patient, PatientDTO.class))
                 .collect(Collectors.toList());
@@ -60,5 +63,14 @@ public class PatientServiceIMPL implements PatientService {
     @Override
     public Long countPatientsByBloodType(BloodType bloodType) {
         return patientRepository.countByBloodType(bloodType);
+    }
+
+    @Override
+    public PatientDTO updatePatient(Long id, PatientDTO patientDTO) {
+        Patient existingPatient = patientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
+        modelMapper.map(patientDTO, existingPatient);
+        existingPatient = patientRepository.save(existingPatient);
+        return modelMapper.map(existingPatient, PatientDTO.class);
     }
 }
