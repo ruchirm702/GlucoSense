@@ -1,6 +1,5 @@
 package dev.ruchir.glucosense.dto.Core_Dto;
 
-
 import dev.ruchir.glucosense.dto.Enum_dto.BloodTypeDTO;
 import dev.ruchir.glucosense.dto.Support_dto.AllergyDTO;
 import dev.ruchir.glucosense.dto.Support_dto.EmergencyContactDTO;
@@ -11,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,11 +17,11 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class PatientDTO {
     private Long id;
     private String firstName;
     private String lastName;
+    private String email; // Add this line
     private LocalDate dateOfBirth;
     private BloodTypeDTO bloodType;
     private RoleDTO role;

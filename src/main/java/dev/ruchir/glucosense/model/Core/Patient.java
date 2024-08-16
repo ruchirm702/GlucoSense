@@ -1,6 +1,5 @@
 package dev.ruchir.glucosense.model.Core;
 
-
 import dev.ruchir.glucosense.model.Enum.BloodType;
 import dev.ruchir.glucosense.model.Enum.Gender;
 import dev.ruchir.glucosense.model.support.*;
@@ -10,10 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.time.LocalDate;
 import java.util.List;
-
 
 @Getter
 @Setter
@@ -22,6 +19,9 @@ import java.util.List;
 @Entity
 @Table(name = "patient")
 public class Patient extends User {
+
+    @Column(unique = true)
+    private String email; // Add this line
 
     private LocalDate dateOfBirth;
     private BloodType bloodType;
