@@ -1,5 +1,6 @@
 package dev.ruchir.glucosense.model.support;
 
+
 import dev.ruchir.glucosense.model.Core.Patient;
 import dev.ruchir.glucosense.model.Enum.AllergyType;
 import jakarta.persistence.*;

@@ -110,4 +110,12 @@ public class GlobalExceptionHandler {
         log.error("An unexpected error occurred: {}", ex.getMessage());
         return buildErrorResponse("An unexpected error occurred", "INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(dev.ruchir.glucosense.exception.UserNotFoundException.class)  // Add handler for UserNotFoundException
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleUserNotFound(dev.ruchir.glucosense.exception.UserNotFoundException ex) {
+        log.error("User not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "USER_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
 }

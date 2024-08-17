@@ -13,7 +13,16 @@ import lombok.*;
 public class UserDTO {
     private Long id;
     private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private UserStatusDTO status;
     private RoleDTO role;
+
+
+    public UserDTO(Long id, String username, String firstName, String lastName, String string) {
+    }
+
+    public UserDTO(Long id, String username, String firstName, String lastName, String email, String string, Object role) {
+    }
 }
