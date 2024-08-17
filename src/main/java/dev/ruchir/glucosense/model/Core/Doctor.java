@@ -14,18 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Doctor")
+@Table(name = "doctor")
 public class Doctor extends User {
 
-    // Doctor-specific fields
     @Column(length = 100, nullable = false)
     private String specialty;
 
     @ManyToOne
-    @JoinColumn(name = "chief_doctor_id") // Adjust the column name as needed
+    @JoinColumn(name = "chief_doctor_id") // Assuming this is a self-referencing foreign key
     private ChiefDoctor chiefDoctor;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Consultation> consultations;
-
 }
