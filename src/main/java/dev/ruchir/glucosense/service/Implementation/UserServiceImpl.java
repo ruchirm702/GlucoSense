@@ -35,8 +35,13 @@ public class UserServiceImpl implements UserService {
     public UserDTO getUserById(Long id) {
         ConcreteUser user = concreteUserRepository.findById(id)
                 .orElseThrow(() -> new dev.ruchir.glucosense.exception.UserNotFoundException("User not found with id " + id));
-        return new UserDTO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getStatus().toString(), null);
+
+        // Convert UserStatus to UserStatusDTO
+        UserStatusDTO statusDTO = UserStatusDTO.valueOf(user.getStatus().toString());
+
+        return new UserDTO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), statusDTO, null);
     }
+
 
     @Override
     public UserDTO updateUser(Long id, UserDTO userDTO) {

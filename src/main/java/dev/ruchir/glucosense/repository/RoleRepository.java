@@ -11,8 +11,11 @@ import java.util.List;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+
     // Custom query to find roles by patient ID
     @Query("SELECT r FROM Role r JOIN r.patients p WHERE p.id = :patientId")
+
     List<Role> findByPatientId(@Param("patientId") Long patientId);
+
     Role findByName(String name);
 }

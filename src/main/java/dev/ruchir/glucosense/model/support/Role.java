@@ -1,5 +1,6 @@
 package dev.ruchir.glucosense.model.support;
 
+import dev.ruchir.glucosense.model.Core.Doctor;
 import dev.ruchir.glucosense.model.Core.Patient;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,4 +27,7 @@ public class Role {
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     private List<Patient> patients;
+
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private List<Doctor> doctors;
 }

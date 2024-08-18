@@ -13,7 +13,10 @@ import lombok.Setter;
 
 public class DoctorDTO {
     private Long id;
-    private String name;
+    private Long roleId;
+    private String username;
     private String specialty;
     private UserDTO user;
+
+
 }

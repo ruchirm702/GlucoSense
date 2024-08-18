@@ -9,7 +9,12 @@ import lombok.*;
 public class UserStatusDTO {
     private String statusName;
 
-    // Assuming you need a way to get the name of the status
+    // Simulating an enum behavior with a static method
+    public static UserStatusDTO valueOf(String statusName) {
+        return new UserStatusDTO(statusName);
+    }
+
+    // Returns the name of the status
     public String name() {
         return statusName;
     }

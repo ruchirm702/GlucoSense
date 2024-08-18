@@ -1,7 +1,5 @@
 package dev.ruchir.glucosense.dto.Support_dto;
 
-
-
 import dev.ruchir.glucosense.dto.Enum_dto.UserStatusDTO;
 import lombok.*;
 
@@ -9,7 +7,6 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UserDTO {
     private Long id;
     private String username;
@@ -20,9 +17,4 @@ public class UserDTO {
     private RoleDTO role;
 
 
-    public UserDTO(Long id, String username, String firstName, String lastName, String string) {
-    }
-
-    public UserDTO(Long id, String username, String firstName, String lastName, String email, String string, Object role) {
-    }
 }

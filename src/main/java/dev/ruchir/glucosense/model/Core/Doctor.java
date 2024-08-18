@@ -1,11 +1,11 @@
 package dev.ruchir.glucosense.model.Core;
 
+import dev.ruchir.glucosense.model.Core.ChiefDoctor;
+import dev.ruchir.glucosense.model.Core.Consultation;
+import dev.ruchir.glucosense.model.support.Role;
 import dev.ruchir.glucosense.model.support.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -18,12 +18,19 @@ import java.util.List;
 public class Doctor extends User {
 
     @Column(length = 100, nullable = false)
-    private String specialty;
+    private String specialization;
+
 
     @ManyToOne
-    @JoinColumn(name = "chief_doctor_id") // Assuming this is a self-referencing foreign key
+    @JoinColumn(name = "chief_doctor_id")
     private ChiefDoctor chiefDoctor;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Consultation> consultations;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+
 }
