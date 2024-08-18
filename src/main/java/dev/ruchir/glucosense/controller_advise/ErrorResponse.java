@@ -15,4 +15,5 @@ public class ErrorResponse {
     private String errorCode;
     private LocalDateTime timestamp;
     private HttpStatus status;
+    private String errorId; // Optional field for tracking errors
 }

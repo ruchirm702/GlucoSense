@@ -1,5 +1,6 @@
 package dev.ruchir.glucosense.controller_advise;
 
+
 import dev.ruchir.glucosense.controller_advise.Custom_Exceptions.*;
 import dev.ruchir.glucosense.controller_advise.Standard_Exceptions.*;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -22,9 +24,14 @@ public class GlobalExceptionHandler {
                 message,
                 errorCode,
                 LocalDateTime.now(),
-                status
+                status,
+                generateErrorId() // Optionally include a unique error ID
         );
         return new ResponseEntity<>(errorResponse, status);
+    }
+
+    private String generateErrorId() {
+        return UUID.randomUUID().toString(); // Generate a unique ID for tracking errors
     }
 
     @ExceptionHandler(PatientNotFoundException.class)
@@ -111,11 +118,59 @@ public class GlobalExceptionHandler {
         return buildErrorResponse("An unexpected error occurred", "INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(dev.ruchir.glucosense.exception.UserNotFoundException.class)  // Add handler for UserNotFoundException
+    @ExceptionHandler(dev.ruchir.glucosense.exception.UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ErrorResponse> handleUserNotFound(dev.ruchir.glucosense.exception.UserNotFoundException ex) {
         log.error("User not found: {}", ex.getMessage());
         return buildErrorResponse(ex.getMessage(), "USER_NOT_FOUND", HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ConsultationNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleConsultationNotFoundException(ConsultationNotFoundException ex) {
+        log.error("Consultation not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "CONSULTATION_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DoctorNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleDoctorNotFoundException(DoctorNotFoundException ex) {
+        log.error("Doctor not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "DOCTOR_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MedicationNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleMedicationNotFoundException(MedicationNotFoundException ex) {
+        log.error("Medication not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "MEDICATION_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(EmergencyContactNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleEmergencyContactNotFoundException(EmergencyContactNotFoundException ex) {
+        log.error("Emergency contact not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "EMERGENCY_CONTACT_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DeviceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleDeviceNotFoundException(DeviceNotFoundException ex) {
+        log.error("Device not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "DEVICE_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RoleNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleRoleNotFoundException(RoleNotFoundException ex) {
+        log.error("Role not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "ROLE_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidConsultationDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleInvalidConsultationDataException(InvalidConsultationDataException ex) {
+        log.error("Invalid consultation data: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_CONSULTATION_DATA", HttpStatus.BAD_REQUEST);
+    }
 }
