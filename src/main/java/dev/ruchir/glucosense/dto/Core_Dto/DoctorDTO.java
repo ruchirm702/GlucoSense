@@ -1,11 +1,9 @@
 package dev.ruchir.glucosense.dto.Core_Dto;
 
 import dev.ruchir.glucosense.dto.Support_dto.UserDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,6 +15,7 @@ public class DoctorDTO {
     private String username;
     private String specialty;
     private UserDTO user;
+    private String name;
 
 
 }

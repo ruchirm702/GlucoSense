@@ -5,14 +5,13 @@ import dev.ruchir.glucosense.dto.Support_dto.AllergyDTO;
 import dev.ruchir.glucosense.dto.Support_dto.EmergencyContactDTO;
 import dev.ruchir.glucosense.dto.Support_dto.LabResultDTO;
 import dev.ruchir.glucosense.dto.Support_dto.RoleDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
+
+@Builder
 @Setter
 @Getter
 @NoArgsConstructor
@@ -35,6 +34,6 @@ public class PatientDTO {
     private List<LabResultDTO> labResults;
     private List<MedicationDTO> medications;
 
-    public void setPatientId(Long id) {
-    }
+
+
 }

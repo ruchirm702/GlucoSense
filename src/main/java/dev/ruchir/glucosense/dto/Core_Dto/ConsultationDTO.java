@@ -1,12 +1,10 @@
 package dev.ruchir.glucosense.dto.Core_Dto;
 
-
-
 import java.time.LocalDateTime;
-
-import dev.ruchir.glucosense.dto.Enum_dto.ConsultationStatusDTO;
+import dev.ruchir.glucosense.model.Enum.ConsultationStatus;
 import lombok.*;
 
+@Builder
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,6 +16,9 @@ public class ConsultationDTO {
     private DoctorDTO doctor;
     private ChiefDoctorDTO chiefDoctor;
     private LocalDateTime consultationDate;
-    private ConsultationStatusDTO status;
+    private ConsultationStatus status;
     private String notes;
+    private LocalDateTime dateTime;
+
+
 }

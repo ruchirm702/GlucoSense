@@ -1,7 +1,6 @@
 package dev.ruchir.glucosense.model.Core;
 
-import dev.ruchir.glucosense.model.Core.ChiefDoctor;
-import dev.ruchir.glucosense.model.Core.Consultation;
+
 import dev.ruchir.glucosense.model.support.Role;
 import dev.ruchir.glucosense.model.support.User;
 import jakarta.persistence.*;
@@ -19,6 +18,7 @@ public class Doctor extends User {
 
     @Column(length = 100, nullable = false)
     private String specialization;
+    private String name;
 
 
     @ManyToOne
