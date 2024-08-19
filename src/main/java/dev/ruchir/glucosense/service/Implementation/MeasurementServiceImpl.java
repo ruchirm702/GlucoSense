@@ -1,5 +1,6 @@
 package dev.ruchir.glucosense.service.Implementation;
 
+import dev.ruchir.glucosense.controller_advise.Custom_Exceptions.MeasurementNotFoundException;
 import dev.ruchir.glucosense.controller_advise.Standard_Exceptions.ResourceNotFoundException;
 import dev.ruchir.glucosense.dto.Core_Dto.MeasurementDTO;
 import dev.ruchir.glucosense.dto.Core_Dto.PatientDTO;
@@ -24,12 +25,10 @@ public class MeasurementServiceImpl implements MeasurementService {
     private final PatientRepository patientRepository;
 
     @Override
-    public MeasurementDTO saveMeasurement(MeasurementDTO measurementDTO) {
+    public MeasurementDTO createMeasurement(MeasurementDTO measurementDTO) {
         Patient patient = findPatientById(measurementDTO.getPatient().getId());
-
         Measurement measurement = mapToEntity(measurementDTO, patient);
         Measurement savedMeasurement = measurementRepository.save(measurement);
-
         return mapToDTO(savedMeasurement);
     }
 
@@ -37,20 +36,12 @@ public class MeasurementServiceImpl implements MeasurementService {
     public MeasurementDTO updateMeasurement(Long id, MeasurementDTO measurementDTO) {
         Measurement measurement = findMeasurementById(id);
         Patient patient = findPatientById(measurementDTO.getPatient().getId());
-
         measurement.setMeasurementDate(measurementDTO.getMeasurementDate());
         measurement.setValue(measurementDTO.getValue());
         measurement.setMeasurementType(MeasurementType.valueOf(measurementDTO.getMeasurementType().name()));
         measurement.setPatient(patient);
-
         Measurement updatedMeasurement = measurementRepository.save(measurement);
         return mapToDTO(updatedMeasurement);
-    }
-
-    @Override
-    public MeasurementDTO createMeasurement(MeasurementDTO measurementDTO) {
-        // Implemented as the same as saveMeasurement
-        return saveMeasurement(measurementDTO);
     }
 
     @Override
@@ -96,17 +87,15 @@ public class MeasurementServiceImpl implements MeasurementService {
         dto.setMeasurementDate(measurement.getMeasurementDate());
         dto.setValue(measurement.getValue());
         dto.setMeasurementType(new MeasurementTypeDTO(measurement.getMeasurementType().name()));
-
         PatientDTO patientDTO = new PatientDTO();
         patientDTO.setId(measurement.getPatient().getId());
         dto.setPatient(patientDTO);
-
         return dto;
     }
 
     private Measurement findMeasurementById(Long id) {
         return measurementRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Measurement not found with ID: " + id));
+                .orElseThrow(() -> new MeasurementNotFoundException("Measurement not found with ID: " + id));
     }
 
     private Patient findPatientById(Long id) {

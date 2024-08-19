@@ -7,14 +7,9 @@ import java.util.List;
 
 public interface MeasurementService {
     MeasurementDTO createMeasurement(MeasurementDTO measurementDTO);
-    MeasurementDTO getMeasurementById(Long id) throws MeasurementNotFoundException;
+    MeasurementDTO updateMeasurement(Long id, MeasurementDTO measurementDTO);
+    MeasurementDTO getMeasurementById(Long id);
     List<MeasurementDTO> getAllMeasurements();
-
-    MeasurementDTO saveMeasurement(MeasurementDTO measurementDTO);
-
-    MeasurementDTO updateMeasurement(Long id, MeasurementDTO measurementDTO) throws MeasurementNotFoundException;
-
     List<MeasurementDTO> getMeasurementsByPatientId(Long patientId);
-
-    void deleteMeasurement(Long id) throws MeasurementNotFoundException;
+    void deleteMeasurement(Long id);
 }
