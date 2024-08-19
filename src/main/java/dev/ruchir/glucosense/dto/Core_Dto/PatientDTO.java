@@ -5,7 +5,9 @@ import dev.ruchir.glucosense.dto.Support_dto.AllergyDTO;
 import dev.ruchir.glucosense.dto.Support_dto.EmergencyContactDTO;
 import dev.ruchir.glucosense.dto.Support_dto.LabResultDTO;
 import dev.ruchir.glucosense.dto.Support_dto.RoleDTO;
+
 import lombok.*;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,7 +35,6 @@ public class PatientDTO {
     private EmergencyContactDTO emergencyContact;
     private List<LabResultDTO> labResults;
     private List<MedicationDTO> medications;
-
 
 
 }

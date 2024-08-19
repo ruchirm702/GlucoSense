@@ -1,5 +1,6 @@
 package dev.ruchir.glucosense.model.Core;
 
+
 import dev.ruchir.glucosense.model.Enum.BloodType;
 import dev.ruchir.glucosense.model.Enum.Gender;
 import dev.ruchir.glucosense.model.support.*;
@@ -59,4 +60,6 @@ public class Patient extends User {
 
     @OneToMany(mappedBy = "patient")
     private List<Medication> medications;
+
+
 }

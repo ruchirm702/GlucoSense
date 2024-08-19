@@ -1,4 +1,4 @@
-package dev.ruchir.glucosense.dto;
+package dev.ruchir.glucosense.dto.Enum_dto;
 
 import dev.ruchir.glucosense.model.Enum.Gender;
 import lombok.Getter;
@@ -13,4 +13,5 @@ import lombok.AllArgsConstructor;
 public class GenderDTO {
     private Long id;
     private Gender gender;
+    private String typeName;
 }

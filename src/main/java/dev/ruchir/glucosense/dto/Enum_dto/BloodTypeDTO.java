@@ -9,4 +9,5 @@ import lombok.*;
 
 public class BloodTypeDTO {
     private String name;
+    private String typeName;
 }
