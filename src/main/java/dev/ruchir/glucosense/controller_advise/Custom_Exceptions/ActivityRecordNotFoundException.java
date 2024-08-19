@@ -1,8 +1,6 @@
 package dev.ruchir.glucosense.controller_advise.Custom_Exceptions;
 
-import dev.ruchir.glucosense.controller_advise.Standard_Exceptions.ResourceNotFoundException;
-
-public class ActivityRecordNotFoundException extends ResourceNotFoundException {
+public class ActivityRecordNotFoundException extends RuntimeException {
     public ActivityRecordNotFoundException(String message) {
         super(message);
     }

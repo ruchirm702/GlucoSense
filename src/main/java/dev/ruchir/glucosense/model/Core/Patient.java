@@ -1,6 +1,5 @@
 package dev.ruchir.glucosense.model.Core;
 
-
 import dev.ruchir.glucosense.model.Enum.BloodType;
 import dev.ruchir.glucosense.model.Enum.Gender;
 import dev.ruchir.glucosense.model.support.*;
@@ -22,7 +21,7 @@ import java.util.List;
 public class Patient extends User {
 
     @Column(unique = true)
-    private String email; // Add this line
+    private String email;
 
     private LocalDate dateOfBirth;
     private BloodType bloodType;
@@ -60,6 +59,9 @@ public class Patient extends User {
 
     @OneToMany(mappedBy = "patient")
     private List<Medication> medications;
+
+    private String userStatus;
+    private String contactDetails;
 
 
 }
