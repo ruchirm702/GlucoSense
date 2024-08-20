@@ -216,21 +216,9 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex.getMessage(), "PAYMENT_NOT_FOUND", HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(InvalidBillingDataException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidBillingDataException(InvalidBillingDataException ex) {
-        log.error("Invalid billing data: {}", ex.getMessage());
-        return buildErrorResponse(ex.getMessage(), "INVALID_BILLING_DATA", HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(PaymentProcessingException.class)
-    public ResponseEntity<ErrorResponse> handlePaymentProcessingException(PaymentProcessingException ex) {
-        log.error("Payment processing error: {}", ex.getMessage());
-        return buildErrorResponse(ex.getMessage(), "PAYMENT_PROCESSING_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
-        log.error("An unexpected error occurred: {}", ex.getMessage());
-        return buildErrorResponse("An unexpected error occurred", "INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(InvalidPaymentDataException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidPaymentDataException(InvalidPaymentDataException ex) {
+        log.error("Invalid payment data: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_PAYMENT_DATA", HttpStatus.BAD_REQUEST);
     }
 }
