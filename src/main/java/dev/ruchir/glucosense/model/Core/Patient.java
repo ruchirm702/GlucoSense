@@ -24,12 +24,14 @@ public class Patient extends User {
     private String email;
 
     private LocalDate dateOfBirth;
+
+    @Enumerated(EnumType.STRING)
     private BloodType bloodType;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Role role;
 
@@ -62,6 +64,4 @@ public class Patient extends User {
 
     private String userStatus;
     private String contactDetails;
-
-
 }
