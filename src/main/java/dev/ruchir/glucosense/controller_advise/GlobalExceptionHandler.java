@@ -221,4 +221,16 @@ public class GlobalExceptionHandler {
         log.error("Invalid payment data: {}", ex.getMessage());
         return buildErrorResponse(ex.getMessage(), "INVALID_PAYMENT_DATA", HttpStatus.BAD_REQUEST);
     }
+    // Prescription Service Exceptions
+    @ExceptionHandler(PrescriptionNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlePrescriptionNotFound(PrescriptionNotFoundException ex) {
+        log.error("Prescription not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "PRESCRIPTION_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidPrescriptionDataException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidPrescriptionData(InvalidPrescriptionDataException ex) {
+        log.error("Invalid prescription data: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_PRESCRIPTION_DATA", HttpStatus.BAD_REQUEST);
+    }
 }
