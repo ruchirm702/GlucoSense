@@ -1,6 +1,5 @@
 package dev.ruchir.glucosense.controller_advise;
 
-
 import dev.ruchir.glucosense.controller_advise.Custom_Exceptions.*;
 import dev.ruchir.glucosense.controller_advise.Standard_Exceptions.*;
 import org.slf4j.Logger;
@@ -163,6 +162,24 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleInvalidConsultationDataException(InvalidConsultationDataException ex) {
         log.error("Invalid consultation data: {}", ex.getMessage());
         return buildErrorResponse(ex.getMessage(), "INVALID_CONSULTATION_DATA", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotificationNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotificationNotFoundException(NotificationNotFoundException ex) {
+        log.error("Notification not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "NOTIFICATION_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NotificationAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleNotificationAlreadyExistsException(NotificationAlreadyExistsException ex) {
+        log.error("Notification already exists: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "NOTIFICATION_ALREADY_EXISTS", HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidNotificationDataException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidNotificationDataException(InvalidNotificationDataException ex) {
+        log.error("Invalid notification data: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_NOTIFICATION_DATA", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
