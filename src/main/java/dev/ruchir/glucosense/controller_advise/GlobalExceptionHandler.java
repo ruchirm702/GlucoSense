@@ -244,4 +244,23 @@ public class GlobalExceptionHandler {
         log.error("Invalid request: {}", ex.getMessage());
         return buildErrorResponse(ex.getMessage(), "INVALID_REQUEST", HttpStatus.BAD_REQUEST);
     }
+
+    // Insurance Service Exceptions
+    @ExceptionHandler(InsuranceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleInsuranceNotFound(InsuranceNotFoundException ex) {
+        log.error("Insurance not found: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INSURANCE_NOT_FOUND", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InsuranceAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleInsuranceAlreadyExists(InsuranceAlreadyExistsException ex) {
+        log.error("Insurance already exists: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INSURANCE_ALREADY_EXISTS", HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidInsuranceDataException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidInsuranceData(InvalidInsuranceDataException ex) {
+        log.error("Invalid insurance data: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_INSURANCE_DATA", HttpStatus.BAD_REQUEST);
+    }
 }
