@@ -233,4 +233,15 @@ public class GlobalExceptionHandler {
         log.error("Invalid prescription data: {}", ex.getMessage());
         return buildErrorResponse(ex.getMessage(), "INVALID_PRESCRIPTION_DATA", HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(ReportGenerationException.class)
+    public ResponseEntity<ErrorResponse> handleReportGenerationException(ReportGenerationException ex) {
+        log.error("Error generating report: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "REPORT_GENERATION_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(InvalidRequestException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidRequestException(InvalidRequestException ex) {
+        log.error("Invalid request: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), "INVALID_REQUEST", HttpStatus.BAD_REQUEST);
+    }
 }
