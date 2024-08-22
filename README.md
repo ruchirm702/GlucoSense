@@ -1,10 +1,6 @@
 # GlucoSense
 
-![GlucoSense](https://img.shields.io/badge/GlucoSense-Diabetes%20Management-87CEEB?style=for-the-badge&logo=medical&logoColor=white)  
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)  
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)  
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)  
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+ ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)  ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)  ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)  ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)![GlucoSense](https://img.shields.io/badge/GlucoSense-Diabetes%20Management-87CEEB?style=for-the-badge&logo=medical&logoColor=white) 
 
 
 Welcome to **GlucoSense**—a comprehensive diabetes management system designed to streamline patient care and enhance health management. With a focus on various aspects of diabetes care, GlucoSense provides a robust foundation for managing patient information, medical records, and user interactions.
@@ -289,5 +285,7 @@ GlucoSense includes several key services, each responsible for different aspects
   - **Get All Feedbacks:** `GET /api/feedback`
   - **Get Feedback by Target:** `GET /api/feedback/target/{targetEntityType}/{targetEntityId}`
 
-![Logo](https://www.canva.com/design/DAGOmR3J8BQ/x3CpsySueyD8Ahk1FvYZlA/view?utm_content=DAGOmR3J8BQ&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
