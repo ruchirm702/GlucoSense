@@ -13,7 +13,7 @@ Welcome to **GlucoSense**—a comprehensive diabetes management system designed 
 
 GlucoSense uses a monolithic architecture, integrating all functionalities into a single application. The entire system—comprising modules like PatientService, UserService, and BillingService—is developed, deployed, and maintained as one unit.
 
-Check out the project overview and design on Canva: [GlucoSense Overview](https://www.canva.com/design/DAGOmR3J8BQ/x3CpsySueyD8Ahk1FvYZlA/view?utm_content=DAGOmR3J8BQ&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+Check out the project  design: [GlucoSense Overview](https://www.canva.com/design/DAGOmR3J8BQ/x3CpsySueyD8Ahk1FvYZlA/view?utm_content=DAGOmR3J8BQ&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
 
