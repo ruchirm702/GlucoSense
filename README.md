@@ -15,8 +15,6 @@ GlucoSense uses a monolithic architecture, integrating all functionalities into 
 
 Check out the project  design: [GlucoSense Overview](https://www.canva.com/design/DAGOmR3J8BQ/x3CpsySueyD8Ahk1FvYZlA/view?utm_content=DAGOmR3J8BQ&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
-
-
 ## 🚀 Key Features
 
 1. **Patient Management**
@@ -285,7 +283,5 @@ GlucoSense includes several key services, each responsible for different aspects
   - **Get All Feedbacks:** `GET /api/feedback`
   - **Get Feedback by Target:** `GET /api/feedback/target/{targetEntityType}/{targetEntityId}`
 
-
 ## Contributing
-
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
